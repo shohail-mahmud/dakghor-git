@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import Postbox from "@/components/dakghor/pages/Postbox";
+export const Route = createFileRoute("/postbox")({ head: () => ({ meta: [{ title: "Postbox — Dakghor" }, { name: "description", content: "See letters that have arrived and correspondence still traveling through Dakghor." }, { property: "og:title", content: "Postbox — Dakghor" }, { property: "og:description", content: "See letters that have arrived and correspondence still traveling through Dakghor." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: Postbox });

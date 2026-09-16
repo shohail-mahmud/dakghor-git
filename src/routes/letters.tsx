@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import Letters from "@/components/dakghor/pages/Letters";
+export const Route = createFileRoute("/letters")({ head: () => ({ meta: [{ title: "My Letters — Dakghor" }, { name: "description", content: "Browse the letters kept in your personal Dakghor archive." }, { property: "og:title", content: "My Letters — Dakghor" }, { property: "og:description", content: "Browse the letters kept in your personal Dakghor archive." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: Letters });
