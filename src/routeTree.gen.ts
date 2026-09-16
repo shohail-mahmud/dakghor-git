@@ -10,33 +10,166 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AddressRouteImport } from './routes/address'
+import { Route as CreateAccountRouteImport } from './routes/create-account'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as LettersRouteImport } from './routes/letters'
+import { Route as PostboxRouteImport } from './routes/postbox'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as WriteRouteImport } from './routes/write'
+import { Route as LettersIdRouteImport } from './routes/letters.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddressRoute = AddressRouteImport.update({
+  id: '/address',
+  path: '/address',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateAccountRoute = CreateAccountRouteImport.update({
+  id: '/create-account',
+  path: '/create-account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LettersRoute = LettersRouteImport.update({
+  id: '/letters',
+  path: '/letters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostboxRoute = PostboxRouteImport.update({
+  id: '/postbox',
+  path: '/postbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WriteRoute = WriteRouteImport.update({
+  id: '/write',
+  path: '/write',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LettersIdRoute = LettersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => LettersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/address': typeof AddressRoute
+  '/create-account': typeof CreateAccountRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/letters': typeof LettersRouteWithChildren
+  '/postbox': typeof PostboxRoute
+  '/settings': typeof SettingsRoute
+  '/sign-in': typeof SignInRoute
+  '/write': typeof WriteRoute
+  '/letters/$id': typeof LettersIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/address': typeof AddressRoute
+  '/create-account': typeof CreateAccountRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/letters': typeof LettersRouteWithChildren
+  '/postbox': typeof PostboxRoute
+  '/settings': typeof SettingsRoute
+  '/sign-in': typeof SignInRoute
+  '/write': typeof WriteRoute
+  '/letters/$id': typeof LettersIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/address': typeof AddressRoute
+  '/create-account': typeof CreateAccountRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/letters': typeof LettersRouteWithChildren
+  '/postbox': typeof PostboxRoute
+  '/settings': typeof SettingsRoute
+  '/sign-in': typeof SignInRoute
+  '/write': typeof WriteRoute
+  '/letters/$id': typeof LettersIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/address'
+    | '/create-account'
+    | '/how-it-works'
+    | '/letters'
+    | '/postbox'
+    | '/settings'
+    | '/sign-in'
+    | '/write'
+    | '/letters/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/address'
+    | '/create-account'
+    | '/how-it-works'
+    | '/letters'
+    | '/postbox'
+    | '/settings'
+    | '/sign-in'
+    | '/write'
+    | '/letters/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/address'
+    | '/create-account'
+    | '/how-it-works'
+    | '/letters'
+    | '/postbox'
+    | '/settings'
+    | '/sign-in'
+    | '/write'
+    | '/letters/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AddressRoute: typeof AddressRoute
+  CreateAccountRoute: typeof CreateAccountRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  LettersRoute: typeof LettersRouteWithChildren
+  PostboxRoute: typeof PostboxRoute
+  SettingsRoute: typeof SettingsRoute
+  SignInRoute: typeof SignInRoute
+  WriteRoute: typeof WriteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +181,101 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/address': {
+      id: '/address'
+      path: '/address'
+      fullPath: '/address'
+      preLoaderRoute: typeof AddressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create-account': {
+      id: '/create-account'
+      path: '/create-account'
+      fullPath: '/create-account'
+      preLoaderRoute: typeof CreateAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/letters': {
+      id: '/letters'
+      path: '/letters'
+      fullPath: '/letters'
+      preLoaderRoute: typeof LettersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/postbox': {
+      id: '/postbox'
+      path: '/postbox'
+      fullPath: '/postbox'
+      preLoaderRoute: typeof PostboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/write': {
+      id: '/write'
+      path: '/write'
+      fullPath: '/write'
+      preLoaderRoute: typeof WriteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/letters/$id': {
+      id: '/letters/$id'
+      path: '/$id'
+      fullPath: '/letters/$id'
+      preLoaderRoute: typeof LettersIdRouteImport
+      parentRoute: typeof LettersRoute
+    }
   }
 }
 
+interface LettersRouteChildren {
+  LettersIdRoute: typeof LettersIdRoute
+}
+
+const LettersRouteChildren: LettersRouteChildren = {
+  LettersIdRoute: LettersIdRoute,
+}
+
+const LettersRouteWithChildren =
+  LettersRoute._addFileChildren(LettersRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AddressRoute: AddressRoute,
+  CreateAccountRoute: CreateAccountRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  LettersRoute: LettersRouteWithChildren,
+  PostboxRoute: PostboxRoute,
+  SettingsRoute: SettingsRoute,
+  SignInRoute: SignInRoute,
+  WriteRoute: WriteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
