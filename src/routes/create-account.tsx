@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import CreateAccount from "@/components/dakghor/pages/CreateAccount";
+export const Route = createFileRoute("/create-account")({ head: () => ({ meta: [{ title: "Create Account — Dakghor" }, { name: "description", content: "Create your Dakghor account and receive your own permanent postal address." }, { property: "og:title", content: "Create Account — Dakghor" }, { property: "og:description", content: "Create your Dakghor account and receive your own permanent postal address." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: CreateAccount });

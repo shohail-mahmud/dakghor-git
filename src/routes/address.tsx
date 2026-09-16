@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import Address from "@/components/dakghor/pages/Address";
+export const Route = createFileRoute("/address")({ head: () => ({ meta: [{ title: "My Address — Dakghor" }, { name: "description", content: "View and share your permanent Dakghor postal address." }, { property: "og:title", content: "My Address — Dakghor" }, { property: "og:description", content: "View and share your permanent Dakghor postal address." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: Address });

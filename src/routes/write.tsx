@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import Write from "@/components/dakghor/pages/Write";
+export const Route = createFileRoute("/write")({ head: () => ({ meta: [{ title: "Write a Letter — Dakghor" }, { name: "description", content: "Write, address, and seal a new letter for the Dakghor postal network." }, { property: "og:title", content: "Write a Letter — Dakghor" }, { property: "og:description", content: "Write, address, and seal a new letter for the Dakghor postal network." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: Write });
