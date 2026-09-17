@@ -1,5 +1,5 @@
-import { useNavigate } from "@tanstack/react-router";
-import { Kicker, Input, Button } from "../ui";
+import { useNavigate, Link } from "@tanstack/react-router";
+import { Input, Button } from "../ui";
 import { IconUser, IconLock, IconLogout } from "../icons";
 import { signOutOfDemo } from "@/lib/demo-auth";
 
@@ -85,6 +85,14 @@ export default function Settings() {
         >
           Delete my account
         </Button>
+      </div>
+
+      <div className="mt-12 pt-6 border-t border-ink/10 flex items-center justify-between text-xs text-ink/45 font-okine">
+        <span>Dakghor Digital Postal Service</span>
+        <div className="flex gap-4">
+          <Link to="/terms" className="hover:text-postbox transition-colors">Terms of Service</Link>
+          <Link to="/privacy" className="hover:text-postbox transition-colors">Privacy Policy</Link>
+        </div>
       </div>
     </div>
   );
