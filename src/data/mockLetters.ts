@@ -29,7 +29,7 @@ export const initialMockLetters: MockLetter[] = [
     body: [
       "Do you still keep the window open when it rains, or was that only ever a summer habit?",
       "I ask because I caught myself doing it last night and thought of you immediately, which felt unfair to the rain.",
-      "Send word when you can. No rush — I know how these things travel.",
+      "Send word when you can. No rush, I know how these things travel.",
     ],
   },
   {
@@ -51,7 +51,7 @@ export const initialMockLetters: MockLetter[] = [
     subjectLine: "Two things I noticed",
     body: [
       "One: the market moved the fish stalls again, for no reason anyone can explain.",
-      "Two: I still think of you every time I pass the tea stand near the old post office — which, considering everything, feels appropriate.",
+      "Two: I still think of you every time I pass the tea stand near the old post office, which, considering everything, feels appropriate.",
     ],
   },
 ];
