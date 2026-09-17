@@ -1,6 +1,4 @@
-import { Kicker } from "../ui";
-import { RouterButton } from "../ui";
-import { Postmark } from "../ui";
+import { RouterButton, Postmark } from "../ui";
 import { IconPin, IconFeather, IconSeal, IconRoute, IconEnvelopeOpen } from "../icons";
 
 const steps = [
@@ -8,7 +6,7 @@ const steps = [
     n: "01",
     icon: IconPin,
     title: "Get your address",
-    body: "Create an account and Dakghor issues you a unique postal address — something like DG-2M8R-41. It's yours alone, and it's how people find you.",
+    body: "Create an account and Dakghor issues you a unique postal address, something like DG-XXXX-XX. It is yours alone, and it is how people find you.",
   },
   {
     n: "02",
@@ -20,7 +18,7 @@ const steps = [
     n: "03",
     icon: IconSeal,
     title: "Seal it",
-    body: "When you're finished, you seal the letter instead of sending it. Sealing is deliberate — once closed, the letter can't be edited or unsent.",
+    body: "When you're finished, you seal the letter instead of sending it. Sealing is deliberate; once closed, the letter cannot be edited or unsent.",
   },
   {
     n: "04",
@@ -32,7 +30,7 @@ const steps = [
     n: "05",
     icon: IconEnvelopeOpen,
     title: "It arrives",
-    body: "The recipient finds it waiting in their Postbox, postmarked with the date it was sealed. They open it when they're ready — not the moment it lands.",
+    body: "The recipient finds it waiting in their Postbox, postmarked with the date it was sealed. They open it when they are ready, not the moment it lands.",
   },
 ];
 
@@ -41,8 +39,7 @@ export default function HowItWorks() {
     <div>
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-24 pb-14 md:pb-20">
-          <Kicker>A slower kind of delivery</Kicker>
-          <h1 className="mt-5 font-mediate text-4xl md:text-6xl leading-[1.05] text-ink max-w-3xl">
+          <h1 className="font-mediate text-4xl md:text-6xl leading-[1.05] text-ink max-w-3xl">
             How a letter finds its way through Dakghor.
           </h1>
           <p className="mt-6 font-okine text-ink/65 leading-relaxed max-w-lg">
