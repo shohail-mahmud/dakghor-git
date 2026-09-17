@@ -1,5 +1,5 @@
-import { Link, type LinkProps } from "@tanstack/react-router";
-import { forwardRef, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from "react";
+import { Link } from "@tanstack/react-router";
+import { forwardRef, type ButtonHTMLAttributes, type ComponentProps, type InputHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "secondary" | "ghost" | "leaf";
@@ -19,7 +19,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   return <button ref={ref} className={cn(base, variants[variant], sizes[size], className)} {...props}>{children}</button>;
 });
 
-export function RouterButton({ className, variant = "primary", size = "md", children, ...props }: LinkProps & { variant?: Variant; size?: Size; children: ReactNode }) {
+export function RouterButton({ className, variant = "primary", size = "md", children, ...props }: ComponentProps<typeof Link> & { variant?: Variant; size?: Size; children: ReactNode }) {
   return <Link className={cn(base, variants[variant], sizes[size], className)} {...props}>{children}</Link>;
 }
 
