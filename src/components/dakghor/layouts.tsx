@@ -112,6 +112,8 @@ function Footer() {
         <nav className="flex flex-wrap gap-x-6 gap-y-2 font-ui text-[11px] uppercase tracking-[0.1em] text-ink/65">
           <Link to="/how-it-works">How It Works</Link>
           <Link to="/about">About</Link>
+          <Link to="/terms">Terms</Link>
+          <Link to="/privacy">Privacy</Link>
           <Link to="/sign-in">Sign In</Link>
           <Link to="/create-account">Create Account</Link>
         </nav>
