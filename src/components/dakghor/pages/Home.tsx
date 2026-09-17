@@ -10,7 +10,7 @@ export default function Home() {
     <div>
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-ink/10">
-        <div className="mx-auto max-w-[1400px] px-5 pb-16 pt-14 md:px-10 md:pb-24 md:pt-20">
+        <div className="mx-auto max-w-[1400px] px-5 pb-7 pt-6 md:px-10 md:pb-10 md:pt-8">
           <div className="grid items-end gap-10 md:grid-cols-12">
             <div className="md:col-span-9">
               <h1 className="font-mediate text-[clamp(3.6rem,13vw,6.5rem)] leading-[0.94] tracking-normal text-ink md:text-[clamp(5rem,7.5vw,8rem)]">
@@ -30,7 +30,7 @@ export default function Home() {
 
       {/* NOT A CHAT APP STATEMENT */}
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 grid md:grid-cols-12 gap-10 items-center">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-7 md:py-10 grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-5">
             <Envelope className="max-w-[360px]" />
           </div>
@@ -50,15 +50,15 @@ export default function Home() {
 
       {/* PROCESS TEASER — horizontal timeline, not cards */}
       <section className="border-b border-ink/10 bg-ink text-cream">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-20">
-          <div className="flex items-end justify-between mb-12 md:mb-16 gap-4 flex-wrap">
+        <div className="mx-auto max-w-[1400px] px-5 py-7 md:px-10 md:py-8">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 mb-7 md:mb-10">
             <h2 className="font-mediate text-3xl md:text-5xl">How a letter travels</h2>
             <RouterButton to="/how-it-works" variant="ghost" size="sm" className="!text-cream/70 hover:!text-cream normal-case tracking-normal !text-sm">
               See the full journey →
             </RouterButton>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-10 md:gap-6 relative">
+          <div className="relative grid grid-cols-2 gap-x-5 gap-y-6 md:grid-cols-4 md:gap-6">
             <div className="hidden md:block absolute top-[22px] left-[8%] right-[8%] h-px dash-route-h opacity-30" />
             {[
               { n: "01", label: "Write", icon: IconFeather },
@@ -66,13 +66,17 @@ export default function Home() {
               { n: "03", label: "Travel", icon: IconRoute },
               { n: "04", label: "Arrive", icon: IconEnvelopeOpen },
             ].map((step) => (
-              <div key={step.n} className="relative">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="font-mediate text-lg text-postbox">{step.n}</span>
-                  <span className="h-px flex-1 bg-cream/15" />
+              <div key={step.n} className="relative min-h-24 border-t border-cream/20 pt-3 md:min-h-0 md:border-0 md:pt-0">
+                <div className="mb-3 flex items-center gap-3 md:mb-4">
+                  <span className="shrink-0 font-mediate text-xl text-postbox md:text-lg">{step.n}</span>
+                  <span className="h-px flex-1 bg-cream/20 md:bg-cream/15" />
                 </div>
-                <step.icon className="w-7 h-7 text-leaf mb-4" />
-                <p className="font-okine uppercase tracking-[0.1em] text-sm text-cream/90">{step.label}</p>
+                <div className="flex items-center gap-3 md:block">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control border border-cream/15 bg-cream/5 md:block md:h-auto md:w-auto md:border-0 md:bg-transparent">
+                    <step.icon className="h-6 w-6 text-leaf md:mb-4 md:h-7 md:w-7" />
+                  </span>
+                  <p className="font-okine text-sm uppercase tracking-[0.1em] text-cream/90">{step.label}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -81,7 +85,7 @@ export default function Home() {
 
       {/* EDITORIAL QUOTE BAND */}
       <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-[1000px] px-5 md:px-10 py-20 md:py-28 text-center">
+        <div className="mx-auto max-w-[1000px] px-5 py-8 text-center md:px-10 md:py-12">
           <p className="font-mediate text-2xl md:text-4xl leading-snug text-ink">
             "We built Dakghor for the sentences that don't survive being typed quickly —
             the ones that need a walk to the postbox first."
@@ -94,7 +98,7 @@ export default function Home() {
 
       {/* ADDRESS PREVIEW / CTA */}
       <section>
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-16 md:py-24 grid md:grid-cols-12 gap-10 items-center">
+        <div className="mx-auto max-w-[1400px] px-5 py-7 md:px-10 md:py-10 grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-6">
             <Kicker>Your identity in the network</Kicker>
             <h2 className="mt-5 font-mediate text-3xl md:text-5xl leading-[1.1] text-ink">
@@ -116,8 +120,8 @@ export default function Home() {
           <div className="md:col-span-5 md:col-start-8">
             <div className="paper-grain rounded-card border border-ink/15 bg-cream-dim/60 p-8 shadow-paper md:p-10 relative">
               <Stamp className="absolute -top-6 -right-4 rotate-6" tone="leaf" />
-              <p className="font-okine text-[11px] uppercase tracking-[0.2em] text-ink/50">Your Dakghor Address</p>
-              <p className="mt-3 font-mediate text-4xl md:text-5xl text-ink tracking-tight">DG-7K4P-92</p>
+              <p className="font-okine text-[11px] uppercase tracking-[0.2em] text-ink/50">Example Dakghor Address</p>
+              <p className="mt-3 font-mediate text-4xl md:text-5xl text-ink tracking-tight">DG-2M8R-41</p>
               <div className="mt-6 h-px bg-ink/10" />
               <p className="mt-4 font-okine text-xs text-ink/45">Issued on account creation · Never expires</p>
             </div>

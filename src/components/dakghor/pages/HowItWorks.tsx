@@ -8,7 +8,7 @@ const steps = [
     n: "01",
     icon: IconPin,
     title: "Get your address",
-    body: "Create an account and Dakghor issues you a unique postal address — something like DG-7K4P-92. It's yours alone, and it's how people find you.",
+    body: "Create an account and Dakghor issues you a unique postal address — something like DG-2M8R-41. It's yours alone, and it's how people find you.",
   },
   {
     n: "02",

@@ -5,13 +5,16 @@ import { Button } from "../ui";
 import { Kicker } from "../ui";
 import { Stamp } from "../ui";
 import { IconCopy, IconCheck } from "../icons";
+import { signInToDemo } from "@/lib/demo-auth";
+
+const exampleAddress = "DG-2M8R-41";
 
 export default function CreateAccount() {
   const navigate = useNavigate();
   const [copied, setCopied] = useState(false);
 
   const copyAddress = () => {
-    navigator.clipboard?.writeText("DG-7K4P-92").catch(() => {});
+    navigator.clipboard?.writeText(exampleAddress).catch(() => {});
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
@@ -29,6 +32,7 @@ export default function CreateAccount() {
           className="mt-10 space-y-7"
           onSubmit={(e) => {
             e.preventDefault();
+            signInToDemo();
             navigate({ to: "/postbox" });
           }}
         >
@@ -59,9 +63,9 @@ export default function CreateAccount() {
         <div className="paper-grain rounded-card border border-ink/15 bg-cream-dim/60 p-8 shadow-paper md:p-10 relative">
           <Stamp className="absolute -top-6 -right-4 rotate-6" tone="postbox" />
           <p className="font-okine text-[11px] uppercase tracking-[0.2em] text-ink/50">
-            Your Dakghor Address
+            Example Dakghor Address
           </p>
-          <p className="mt-3 font-mediate text-4xl md:text-5xl text-ink tracking-tight">DG-7K4P-92</p>
+          <p className="mt-3 font-mediate text-4xl md:text-5xl text-ink tracking-tight">{exampleAddress}</p>
           <button
             onClick={copyAddress}
             className="mt-6 inline-flex items-center gap-2 font-okine text-xs uppercase tracking-[0.12em] text-ink border border-ink/40 rounded-[var(--radius-btn)] px-4 py-2.5 hover:border-postbox hover:text-postbox transition-colors"
