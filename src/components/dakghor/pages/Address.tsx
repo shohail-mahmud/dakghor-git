@@ -1,14 +1,38 @@
 import { useState } from "react";
-import { Kicker } from "../ui";
-import { Postmark } from "../ui";
+import { Link } from "@tanstack/react-router";
+import { Kicker, Postmark, Button } from "../ui";
 import { IconCopy, IconCheck, IconPin, IconEnvelope, IconArchive } from "../icons";
-import { currentAddress, mockLetters } from "@/data/mockLetters";
+import { useAccount, useDemoSession } from "@/lib/demo-auth";
+import { useCorrespondenceLog } from "@/lib/letters-store";
 
 export default function Address() {
+  const isAuth = useDemoSession();
+  const account = useAccount();
+  const log = useCorrespondenceLog();
   const [copied, setCopied] = useState(false);
 
+  if (!isAuth || !account) {
+    return (
+      <div className="px-5 md:px-12 py-16 md:py-24 max-w-[600px] mx-auto text-center">
+        <Kicker>Account Required</Kicker>
+        <h1 className="mt-4 font-mediate text-3xl md:text-4xl text-ink">Sign in to view your address</h1>
+        <p className="mt-4 font-okine text-sm text-ink/60 leading-relaxed">
+          Dakghor postal addresses are assigned to registered accounts only. Public visitors do not receive a personal postal identity.
+        </p>
+        <div className="mt-8 flex justify-center gap-4">
+          <Link to="/sign-in">
+            <Button variant="primary">Sign In</Button>
+          </Link>
+          <Link to="/create-account">
+            <Button variant="secondary">Create Account</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   const copy = () => {
-    navigator.clipboard?.writeText(currentAddress).catch(() => {});
+    navigator.clipboard?.writeText(account.address).catch(() => {});
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   };
@@ -16,12 +40,12 @@ export default function Address() {
   return (
     <div className="px-5 md:px-12 py-10 md:py-14 max-w-[1000px] mx-auto">
       <Kicker>
-        <IconPin className="w-3 h-3" />
+        <IconPin className="w-3 h-3 mr-1" />
         Your postal identity
       </Kicker>
       <h1 className="mt-3 font-mediate text-4xl md:text-5xl text-ink">My Address</h1>
       <p className="mt-3 font-okine text-ink/60 max-w-md">
-        This is how people find you on Dakghor. Share it the way you'd share a home address.
+        This is how people write to you on Dakghor. Share it the way you'd share a home address.
       </p>
 
       <div className="mt-10 grid md:grid-cols-12 gap-8">
@@ -35,12 +59,12 @@ export default function Address() {
           <p className="font-okine text-[11px] uppercase tracking-[0.2em] text-ink/50">
             Your Dakghor Address
           </p>
-          <p className="mt-4 font-mediate text-5xl md:text-6xl text-ink tracking-tight">
-            {currentAddress}
+          <p className="mt-4 font-mediate text-5xl md:text-6xl text-ink tracking-tight font-semibold">
+            {account.address}
           </p>
           <button
             onClick={copy}
-            className="mt-8 inline-flex items-center gap-2 font-okine text-xs uppercase tracking-[0.12em] text-ink border border-ink/40 rounded-[var(--radius-btn)] px-5 py-3 hover:border-postbox hover:text-postbox transition-colors"
+            className="mt-8 inline-flex items-center gap-2 font-okine text-xs uppercase tracking-[0.12em] text-ink border border-ink/40 rounded-[var(--radius-btn)] px-5 py-3 hover:border-postbox hover:text-postbox transition-colors bg-paper shadow-paper"
           >
             {copied ? <IconCheck className="w-3.5 h-3.5 text-leaf-dark" /> : <IconCopy className="w-3.5 h-3.5" />}
             {copied ? "Copied to clipboard" : "Copy address"}
@@ -48,12 +72,12 @@ export default function Address() {
 
           <div className="mt-10 pt-6 border-t border-ink/10 grid grid-cols-2 gap-6">
             <div>
-              <p className="font-mediate text-2xl text-ink">{mockLetters.length}</p>
-              <p className="font-okine text-[11px] uppercase tracking-[0.14em] text-ink/45 mt-1">Letters received</p>
+              <p className="font-mediate text-2xl text-ink">{log.length}</p>
+              <p className="font-okine text-[11px] uppercase tracking-[0.14em] text-ink/45 mt-1">Letters logged</p>
             </div>
             <div>
-              <p className="font-mediate text-2xl text-ink">Since March</p>
-              <p className="font-okine text-[11px] uppercase tracking-[0.14em] text-ink/45 mt-1">Address active</p>
+              <p className="font-mediate text-2xl text-ink">{account.createdAt}</p>
+              <p className="font-okine text-[11px] uppercase tracking-[0.14em] text-ink/45 mt-1">Address issued</p>
             </div>
           </div>
         </div>
@@ -65,8 +89,7 @@ export default function Address() {
               Anyone with your address can write
             </h3>
             <p className="font-okine text-sm text-ink/55 leading-relaxed">
-              There's no search or discovery on Dakghor. The only way to reach you is to
-              already know your address.
+              There is no public directory or username search on Dakghor. The only way to receive correspondence is to give someone your address directly.
             </p>
           </div>
           <div className="rounded-card border border-ink/10 bg-paper p-6 shadow-paper">
@@ -75,8 +98,7 @@ export default function Address() {
               It never changes
             </h3>
             <p className="font-okine text-sm text-ink/55 leading-relaxed">
-              Your address is permanent for the life of your account, so old correspondents
-              can always find their way back to you.
+              Your address is permanent for the life of your account. Old correspondents can always find their way back to your Postbox.
             </p>
           </div>
         </div>
