@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "@tanstack/react-router";
-import { Field, Input, Button, Kicker, Stamp, Postmark } from "../ui";
+import { Field, Input, Button, Stamp, Postmark } from "../ui";
 import { IconCopy, IconCheck, IconArrowRight } from "../icons";
 import { createAccount, type DemoAccount } from "@/lib/demo-auth";
 
-const sampleExampleAddress = "DG-2M8R-41";
+const sampleExampleAddress = "DG-XXXX-XX";
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -38,8 +38,7 @@ export default function CreateAccount() {
             tone="postbox"
             className="absolute -top-10 -right-6 w-28 h-28 md:w-36 md:h-36 opacity-80"
           />
-          <Kicker tone="postbox">Account Created · Address Issued</Kicker>
-          <h1 className="mt-4 font-mediate text-3xl md:text-5xl text-ink">
+          <h1 className="font-mediate text-3xl md:text-5xl text-ink">
             Welcome to Dakghor, {createdAccount.name}.
           </h1>
           <p className="mt-3 font-okine text-ink/65 leading-relaxed max-w-xl">
@@ -84,8 +83,7 @@ export default function CreateAccount() {
   return (
     <div className="mx-auto max-w-[1100px] px-5 py-16 md:py-24 grid md:grid-cols-2 gap-14 items-start">
       <div>
-        <Kicker>Join Dakghor</Kicker>
-        <h1 className="mt-4 font-mediate text-4xl md:text-5xl text-ink">Create your account</h1>
+        <h1 className="font-mediate text-4xl md:text-5xl text-ink">Create your account</h1>
         <p className="mt-3 font-okine text-ink/60 leading-relaxed max-w-sm">
           You will be issued your own permanent Dakghor postal address upon creating your account.
         </p>
