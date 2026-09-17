@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Kicker, RouterButton, Button } from "../ui";
+import { RouterButton, Button } from "../ui";
 import { IconArchive, IconClose } from "../icons";
 import { useCorrespondenceLog, clearCorrespondenceLog } from "@/lib/letters-store";
 
@@ -16,13 +16,9 @@ export default function Letters() {
     <div className="px-5 md:px-12 py-10 md:py-14 max-w-[900px] mx-auto">
       <div className="flex items-start justify-between gap-6 flex-wrap mb-10 md:mb-12">
         <div>
-          <Kicker>
-            <IconArchive className="w-3.5 h-3.5 mr-1" />
-            Private device ledger
-          </Kicker>
-          <h1 className="mt-3 font-mediate text-4xl md:text-5xl text-ink">My Letters</h1>
+          <h1 className="font-mediate text-4xl md:text-5xl text-ink">My Letters</h1>
           <p className="mt-3 font-okine text-sm md:text-base text-ink/60 max-w-xl leading-relaxed">
-            A small, local correspondence log kept on this device only. Dakghor does not retain readable letter contents once opened, and nothing is synced to any server.
+            A private correspondence log kept on this device. Dakghor records basic metadata only, never the readable content of unsealed letters.
           </p>
         </div>
 
@@ -67,7 +63,7 @@ export default function Letters() {
           <IconArchive className="mx-auto w-10 h-10 text-ink/30 mb-4" />
           <h2 className="font-mediate text-2xl text-ink">Your local log is empty</h2>
           <p className="mt-2 font-okine text-sm text-ink/55 max-w-md mx-auto leading-relaxed">
-            When you unseal a letter in your Postbox, its sender and sealed date will be recorded here on this browser.
+            When you unseal a letter in your Postbox, its sender and sealed date will be noted in this ledger.
           </p>
           <div className="mt-8">
             <RouterButton to="/postbox" variant="primary" size="md">
@@ -109,9 +105,9 @@ export default function Letters() {
 
           <div className="border-t border-ink/10 bg-cream-dim/20 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-ink/45 font-okine">
             <span>
-              {log.length} correspondence {log.length === 1 ? "entry" : "entries"} logged on this browser.
+              {log.length} correspondence {log.length === 1 ? "entry" : "entries"} recorded on this browser.
             </span>
-            <span>Private record · No letter content retained</span>
+            <span>Private log · Basic metadata only</span>
           </div>
         </div>
       )}
