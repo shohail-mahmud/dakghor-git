@@ -38,10 +38,9 @@ export default function Settings() {
 
   return (
     <div className="px-5 md:px-12 py-10 md:py-14 max-w-[720px] mx-auto">
-      <Kicker>Account</Kicker>
-      <h1 className="mt-3 font-mediate text-4xl md:text-5xl text-ink">Settings</h1>
+      <h1 className="mt-1 font-mediate text-4xl md:text-5xl text-ink">Settings</h1>
       <p className="mt-3 font-okine text-ink/60 max-w-md">
-        Just the essentials — nothing here needs a complicated dashboard.
+        Just the essentials. Nothing here needs a complicated dashboard.
       </p>
 
       <div className="mt-10">
