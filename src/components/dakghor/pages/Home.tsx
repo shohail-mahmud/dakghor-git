@@ -1,8 +1,4 @@
-import { RouterButton } from "../ui";
-import { Kicker } from "../ui";
-import { Postmark } from "../ui";
-import { Envelope } from "../ui";
-import { Stamp } from "../ui";
+import { RouterButton, Postmark, Envelope, Stamp } from "../ui";
 import { IconRoute, IconFeather, IconSeal, IconEnvelopeOpen } from "../icons";
 
 export default function Home() {
@@ -19,7 +15,9 @@ export default function Home() {
               <p className="mt-7 max-w-xl font-okine text-base leading-relaxed text-ink/65 md:text-lg">
                 Dakghor is a digital postal service for correspondence that deserves time, care, and a proper journey.
               </p>
-              <RouterButton to="/create-account" variant="primary" size="lg" className="mt-8">Get your address</RouterButton>
+              <RouterButton to="/create-account" variant="primary" size="lg" className="mt-8">
+                Get your address
+              </RouterButton>
             </div>
             <div className="flex justify-start md:col-span-3 md:justify-end">
               <Postmark label="DAKGHOR POST" date="No rush" className="h-28 w-28 opacity-75 md:h-36 md:w-36" />
@@ -35,9 +33,8 @@ export default function Home() {
             <Envelope className="max-w-[360px]" />
           </div>
           <div className="md:col-span-6 md:col-start-7">
-            <Kicker tone="leaf">Not instant. Not endless. Not disposable.</Kicker>
-            <p className="mt-5 font-mediate text-3xl md:text-[2.6rem] leading-[1.15] text-ink">
-              A message on Dakghor isn't sent. It's <em className="italic">sealed</em>, carried, and delivered —
+            <p className="font-mediate text-3xl md:text-[2.6rem] leading-[1.15] text-ink">
+              A message on Dakghor isn't sent. It's <em className="italic">sealed</em>, carried, and delivered,
               the way correspondence always used to work.
             </p>
             <p className="mt-6 font-okine text-ink/65 leading-relaxed max-w-md">
@@ -48,7 +45,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROCESS TEASER — horizontal timeline, not cards */}
+      {/* PROCESS TEASER */}
       <section className="border-b border-ink/10 bg-ink text-cream">
         <div className="mx-auto max-w-[1400px] px-5 py-7 md:px-10 md:py-8">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 mb-7 md:mb-10">
@@ -87,7 +84,7 @@ export default function Home() {
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-[1000px] px-5 py-8 text-center md:px-10 md:py-12">
           <p className="font-mediate text-2xl md:text-4xl leading-snug text-ink">
-            "We built Dakghor for the sentences that don't survive being typed quickly —
+            "We built Dakghor for the sentences that don't survive being typed quickly,
             the ones that need a walk to the postbox first."
           </p>
           <p className="mt-6 font-okine text-[12px] uppercase tracking-[0.2em] text-ink/50">
@@ -100,12 +97,11 @@ export default function Home() {
       <section>
         <div className="mx-auto max-w-[1400px] px-5 py-7 md:px-10 md:py-10 grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-6">
-            <Kicker>Your identity in the network</Kicker>
-            <h2 className="mt-5 font-mediate text-3xl md:text-5xl leading-[1.1] text-ink">
+            <h2 className="font-mediate text-3xl md:text-5xl leading-[1.1] text-ink">
               Every account gets a Dakghor address of its own.
             </h2>
             <p className="mt-6 font-okine text-ink/65 leading-relaxed max-w-md">
-              Share it the way you'd share a home address — not a username. Anyone who has it
+              Share it the way you'd share a home address, not a username. Anyone who has it
               can write to you. No one else can find you by searching.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -121,9 +117,9 @@ export default function Home() {
             <div className="paper-grain rounded-card border border-ink/15 bg-cream-dim/60 p-8 shadow-paper md:p-10 relative">
               <Stamp className="absolute -top-6 -right-4 rotate-6" tone="leaf" />
               <p className="font-okine text-[11px] uppercase tracking-[0.2em] text-ink/50">Example Dakghor Address</p>
-              <p className="mt-3 font-mediate text-4xl md:text-5xl text-ink tracking-tight">DG-2M8R-41</p>
+              <p className="mt-3 font-mediate text-4xl md:text-5xl text-ink tracking-tight">DG-XXXX-XX</p>
               <div className="mt-6 h-px bg-ink/10" />
-              <p className="mt-4 font-okine text-xs text-ink/45">Issued on account creation · Never expires</p>
+              <p className="mt-4 font-okine text-xs text-ink/45">Sample format · Issued on account creation · Never expires</p>
             </div>
           </div>
         </div>
