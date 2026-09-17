@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "@tanstack/react-router";
-import { Field, Input, Button, Kicker } from "../ui";
+import { Field, Input, Button } from "../ui";
 import { signInToDemo } from "@/lib/demo-auth";
 
 export default function SignIn() {
@@ -21,8 +21,7 @@ export default function SignIn() {
 
   return (
     <div className="mx-auto max-w-[480px] px-5 py-16 md:py-24">
-      <Kicker>Dakghor</Kicker>
-      <h1 className="mt-3 font-mediate text-4xl md:text-5xl text-ink">Sign in</h1>
+      <h1 className="font-mediate text-4xl md:text-5xl text-ink">Sign in</h1>
       <p className="mt-3 font-okine text-sm text-ink/60">
         Access your Postbox and correspondence.
       </p>
