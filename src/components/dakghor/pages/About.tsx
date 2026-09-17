@@ -1,14 +1,11 @@
-import { Kicker } from "../ui";
-import { Postmark } from "../ui";
-import { RouterButton } from "../ui";
+import { Postmark, RouterButton } from "../ui";
 
 export default function About() {
   return (
     <div>
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 pt-16 md:pt-24 pb-14 md:pb-20">
-          <Kicker tone="leaf">About Dakghor</Kicker>
-          <h1 className="mt-5 font-mediate text-4xl md:text-7xl leading-[1.02] text-ink max-w-4xl">
+          <h1 className="font-mediate text-4xl md:text-7xl leading-[1.02] text-ink max-w-4xl">
             We didn't set out to build another inbox.
           </h1>
         </div>
@@ -18,7 +15,7 @@ export default function About() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-14 md:py-20 grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <p className="font-okine text-[12px] uppercase tracking-[0.2em] text-ink/45 sticky top-28">
-              01 — Origin
+              01 Origin
             </p>
           </div>
           <div className="md:col-span-7">
@@ -28,7 +25,7 @@ export default function About() {
               distance built back in?
             </p>
             <p className="mt-8 font-okine text-ink/65 leading-relaxed max-w-xl">
-              Not distance as in disconnection — distance as in the kind that makes you choose
+              Not distance as in disconnection, but distance as in the kind that makes you choose
               your words, finish your sentence, and let a letter sit in transit for a while
               before it lands. We were tired of conversations that never had a chance to end.
             </p>
@@ -40,13 +37,13 @@ export default function About() {
         <div className="mx-auto max-w-[1400px] px-5 md:px-10 py-14 md:py-20 grid md:grid-cols-12 gap-10">
           <div className="md:col-span-4">
             <p className="font-okine text-[12px] uppercase tracking-[0.2em] text-ink/45 sticky top-28">
-              02 — Philosophy
+              02 Philosophy
             </p>
           </div>
           <div className="md:col-span-7">
             <p className="font-mediate text-2xl md:text-[2.1rem] leading-[1.35] text-ink">
-              A postal address is not a username. It's a place someone can reach you —
-              nothing more, nothing less.
+              A postal address is not a username. It is a place someone can reach you,
+              nothing more and nothing less.
             </p>
             <p className="mt-8 font-okine text-ink/65 leading-relaxed max-w-xl">
               There are no public profiles on Dakghor. No follower counts, no feeds, no
@@ -54,7 +51,7 @@ export default function About() {
               letters that make their way to you.
             </p>
             <p className="mt-6 font-okine text-ink/65 leading-relaxed max-w-xl">
-              We think correspondence deserves its own medium — one built around patience
+              We think correspondence deserves its own medium, one built around patience
               rather than immediacy, and around paper rather than bubbles.
             </p>
           </div>
@@ -66,7 +63,7 @@ export default function About() {
           <Postmark label="EST. DAKGHOR" date="Every letter counted" className="mx-auto w-32 h-32 md:w-36 md:h-36" />
           <p className="mt-8 font-mediate text-2xl md:text-4xl leading-snug max-w-3xl mx-auto text-ink">
             Dakghor (ডাকঘর) means "post office." We kept the name because that's exactly
-            what this is — just digital, and a little slower on purpose.
+            what this is, just digital and a little slower on purpose.
           </p>
         </div>
       </section>
