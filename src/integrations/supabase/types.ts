@@ -14,13 +14,43 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          address: string
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          id: string
+          name?: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_dakghor_address: { Args: never; Returns: string }
+      lookup_dakghor_address: {
+        Args: { _address: string }
+        Returns: {
+          address: string
+          display_name: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
