@@ -64,10 +64,10 @@ class LetterService {
     senderAddress: string;
     senderName: string;
     recipientAddress: string;
-    subjectLine?: string;
+    subjectLine?: string | undefined;
     body: string[];
     // Optional delivery override for automated test harnesses only
-    deliveryDelayOverrideMs?: number;
+    deliveryDelayOverrideMs?: number | undefined;
   }): SealLetterResult {
     const { senderAddress, senderName, recipientAddress, subjectLine, body, deliveryDelayOverrideMs } = params;
 
