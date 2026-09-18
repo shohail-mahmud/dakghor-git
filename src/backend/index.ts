@@ -83,9 +83,9 @@ export const DakghorBackend = {
   sealLetter(params: {
     senderSessionId: string;
     recipientAddress: string;
-    subjectLine?: string;
+    subjectLine?: string | undefined;
     body: string[];
-    deliveryDelayOverrideMs?: number;
+    deliveryDelayOverrideMs?: number | undefined;
   }): SealLetterResult {
     const sender = authManager.validateSession(params.senderSessionId);
     if (!sender) {

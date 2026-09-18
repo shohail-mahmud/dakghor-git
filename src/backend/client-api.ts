@@ -70,7 +70,7 @@ export class DakghorClient {
 
   public static sealLetter(params: {
     recipientAddress: string;
-    subjectLine?: string;
+    subjectLine?: string | undefined;
     body: string[];
   }): SealLetterResult {
     const sid = this.getSessionId();

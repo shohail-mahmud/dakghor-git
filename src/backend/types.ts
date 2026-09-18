@@ -47,7 +47,7 @@ export interface TransitLetter {
   senderAddress: string;
   senderName: string;
   recipientAddress: string;
-  subjectLine?: string;
+  subjectLine?: string | undefined;
   body: string[]; // Ruled paper paragraphs
   sealedAt: number; // Unix timestamp
   sealedDateFormatted: string; // Display string, e.g. "17 September 2026"
@@ -64,7 +64,7 @@ export interface PostboxLetterPreview {
   from: string;
   fromAddress: string;
   sealedDate: string;
-  subjectLine?: string;
+  subjectLine?: string | undefined;
 }
 
 /**
@@ -77,7 +77,7 @@ export interface UnsealedLetterContent {
   from: string;
   fromAddress: string;
   sealedDate: string;
-  subjectLine?: string;
+  subjectLine?: string | undefined;
   body: string[];
 }
 
