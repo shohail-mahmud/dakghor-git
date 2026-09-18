@@ -1,21 +1,37 @@
 import { useState } from "react";
 import { useNavigate, Link } from "@tanstack/react-router";
 import { Field, Input, Button } from "../ui";
-import { signInToDemo } from "@/lib/demo-auth";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const [identifier, setIdentifier] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    signInToDemo(identifier.trim());
-    navigate({ to: "/postbox" });
-  };
+    setError("");
+    setBusy(true);
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+    setBusy(false);
 
-  const handleDemoQuickAccess = () => {
-    signInToDemo();
+    if (signInError) {
+      const message = signInError.message.toLowerCase();
+      if (message.includes("not confirmed")) {
+        setError("Please confirm your email first — check your inbox for the Dakghor confirmation link.");
+      } else if (message.includes("invalid")) {
+        setError("That email and password don't match an account.");
+      } else {
+        setError(signInError.message);
+      }
+      return;
+    }
+
     navigate({ to: "/postbox" });
   };
 
@@ -27,18 +43,20 @@ export default function SignIn() {
       </p>
 
       <form className="mt-10 space-y-6" onSubmit={handleSignIn}>
-        <Field label="Dakghor address or email">
+        <Field label="Email">
           <Input
-            type="text"
-            placeholder="DG-XXXX-XX or email"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
+            type="email"
+            autoComplete="email"
+            placeholder="you@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </Field>
         <Field label="Password">
           <Input
             type="password"
+            autoComplete="current-password"
             placeholder="••••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -46,34 +64,19 @@ export default function SignIn() {
           />
         </Field>
 
-        <Button type="submit" size="lg" className="w-full">
-          Sign in
-        </Button>
+        {error && (
+          <p className="rounded-card border border-postbox/30 bg-postbox/5 px-4 py-3 font-okine text-sm text-postbox">
+            {error}
+          </p>
+        )}
 
-        <div className="relative py-2">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t border-ink/10" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-cream px-3 font-okine text-[10px] tracking-wider text-ink/40">
-              Demo Access
-            </span>
-          </div>
-        </div>
-
-        <Button
-          type="button"
-          variant="secondary"
-          size="md"
-          className="w-full"
-          onClick={handleDemoQuickAccess}
-        >
-          Enter Demo Account
+        <Button type="submit" size="lg" className="w-full" disabled={busy}>
+          {busy ? "Signing in…" : "Sign in"}
         </Button>
       </form>
 
       <p className="mt-8 text-center font-okine text-xs text-ink/45">
-        Local demo state · No cloud database or credentials sent over network
+        Your Dakghor address stays private — it is never used to sign in.
       </p>
 
       <p className="mt-6 text-center font-okine text-sm text-ink/55">
