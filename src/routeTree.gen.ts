@@ -16,8 +16,10 @@ import { Route as CreateAccountRouteImport } from './routes/create-account'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as LettersRouteImport } from './routes/letters'
 import { Route as PostboxRouteImport } from './routes/postbox'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WriteRouteImport } from './routes/write'
 import { Route as LettersIdRouteImport } from './routes/letters.$id'
 
@@ -56,6 +58,11 @@ const PostboxRoute = PostboxRouteImport.update({
   path: '/postbox',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -64,6 +71,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const SignInRoute = SignInRouteImport.update({
   id: '/sign-in',
   path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WriteRoute = WriteRouteImport.update({
@@ -85,8 +97,10 @@ export interface FileRoutesByFullPath {
   '/how-it-works': typeof HowItWorksRoute
   '/letters': typeof LettersRouteWithChildren
   '/postbox': typeof PostboxRoute
+  '/privacy': typeof PrivacyRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
+  '/terms': typeof TermsRoute
   '/write': typeof WriteRoute
   '/letters/$id': typeof LettersIdRoute
 }
@@ -98,8 +112,10 @@ export interface FileRoutesByTo {
   '/how-it-works': typeof HowItWorksRoute
   '/letters': typeof LettersRouteWithChildren
   '/postbox': typeof PostboxRoute
+  '/privacy': typeof PrivacyRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
+  '/terms': typeof TermsRoute
   '/write': typeof WriteRoute
   '/letters/$id': typeof LettersIdRoute
 }
@@ -112,8 +128,10 @@ export interface FileRoutesById {
   '/how-it-works': typeof HowItWorksRoute
   '/letters': typeof LettersRouteWithChildren
   '/postbox': typeof PostboxRoute
+  '/privacy': typeof PrivacyRoute
   '/settings': typeof SettingsRoute
   '/sign-in': typeof SignInRoute
+  '/terms': typeof TermsRoute
   '/write': typeof WriteRoute
   '/letters/$id': typeof LettersIdRoute
 }
@@ -127,8 +145,10 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/letters'
     | '/postbox'
+    | '/privacy'
     | '/settings'
     | '/sign-in'
+    | '/terms'
     | '/write'
     | '/letters/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -140,8 +160,10 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/letters'
     | '/postbox'
+    | '/privacy'
     | '/settings'
     | '/sign-in'
+    | '/terms'
     | '/write'
     | '/letters/$id'
   id:
@@ -153,8 +175,10 @@ export interface FileRouteTypes {
     | '/how-it-works'
     | '/letters'
     | '/postbox'
+    | '/privacy'
     | '/settings'
     | '/sign-in'
+    | '/terms'
     | '/write'
     | '/letters/$id'
   fileRoutesById: FileRoutesById
@@ -167,8 +191,10 @@ export interface RootRouteChildren {
   HowItWorksRoute: typeof HowItWorksRoute
   LettersRoute: typeof LettersRouteWithChildren
   PostboxRoute: typeof PostboxRoute
+  PrivacyRoute: typeof PrivacyRoute
   SettingsRoute: typeof SettingsRoute
   SignInRoute: typeof SignInRoute
+  TermsRoute: typeof TermsRoute
   WriteRoute: typeof WriteRoute
 }
 
@@ -223,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostboxRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -235,6 +268,13 @@ declare module '@tanstack/react-router' {
       path: '/sign-in'
       fullPath: '/sign-in'
       preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/write': {
@@ -273,8 +313,10 @@ const rootRouteChildren: RootRouteChildren = {
   HowItWorksRoute: HowItWorksRoute,
   LettersRoute: LettersRouteWithChildren,
   PostboxRoute: PostboxRoute,
+  PrivacyRoute: PrivacyRoute,
   SettingsRoute: SettingsRoute,
   SignInRoute: SignInRoute,
+  TermsRoute: TermsRoute,
   WriteRoute: WriteRoute,
 }
 export const routeTree = rootRouteImport
