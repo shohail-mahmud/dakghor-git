@@ -24,7 +24,7 @@ export function generateDakghorAddress(existingAddresses: Set<string>): string {
     if (typeof crypto !== "undefined" && crypto.getRandomValues) {
       crypto.getRandomValues(bytes);
       for (let i = 0; i < len; i++) {
-        result += ADDRESS_CHARS[bytes[i] % ADDRESS_CHARS.length];
+        result += ADDRESS_CHARS[(bytes[i] ?? 0) % ADDRESS_CHARS.length];
       }
     } else {
       for (let i = 0; i < len; i++) {
