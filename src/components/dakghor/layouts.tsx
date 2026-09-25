@@ -17,9 +17,11 @@ export function Logo({ dark = false, className }: { dark?: boolean; className?: 
 }
 
 const publicLinks = [
+  { to: "/" as const, label: "Home" },
   { to: "/how-it-works" as const, label: "How It Works" },
   { to: "/about" as const, label: "About" },
 ];
+
 
 export function PublicLayout() {
   const [open, setOpen] = useState(false);
