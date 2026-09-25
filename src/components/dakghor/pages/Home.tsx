@@ -55,28 +55,35 @@ export default function Home() {
             </RouterButton>
           </div>
 
-          <div className="relative grid grid-cols-2 gap-x-5 gap-y-6 md:grid-cols-4 md:gap-6">
-            <div className="hidden md:block absolute top-[22px] left-[8%] right-[8%] h-px dash-route-h opacity-30" />
+          <div className="relative grid grid-cols-2 gap-x-5 gap-y-6 md:grid-cols-4 md:gap-5">
+            <div className="absolute left-[12%] right-[12%] top-[86px] hidden h-px dash-route-h opacity-25 md:block" />
             {[
-              { n: "01", label: "Write", icon: IconFeather },
-              { n: "02", label: "Seal", icon: IconSeal },
-              { n: "03", label: "Travel", icon: IconRoute },
-              { n: "04", label: "Arrive", icon: IconEnvelopeOpen },
+              { n: "01", label: "Write", icon: IconFeather, note: "Set it down slowly. Nothing is sent as you type." },
+              { n: "02", label: "Seal", icon: IconSeal, note: "Stamped and closed. It cannot be edited or recalled." },
+              { n: "03", label: "Travel", icon: IconRoute, note: "It moves quietly. No tracking, no countdown." },
+              { n: "04", label: "Arrive", icon: IconEnvelopeOpen, note: "One day it is simply resting in their postbox." },
             ].map((step) => (
-              <div key={step.n} className="relative min-h-24 border-t border-cream/20 pt-3 md:min-h-0 md:border-0 md:pt-0">
-                <div className="mb-3 flex items-center gap-3 md:mb-4">
-                  <span className="shrink-0 font-mediate text-xl text-postbox md:text-lg">{step.n}</span>
+              <div
+                key={step.n}
+                className="relative min-h-24 border-t border-cream/20 pt-3 md:min-h-0 md:rounded-card md:border md:border-cream/12 md:bg-cream/[0.04] md:p-6 md:pt-6"
+              >
+                <div className="mb-3 flex items-center gap-3 md:mb-5">
+                  <span className="shrink-0 font-mediate text-xl text-postbox md:text-2xl">{step.n}</span>
                   <span className="h-px flex-1 bg-cream/20 md:bg-cream/15" />
                 </div>
                 <div className="flex items-center gap-3 md:block">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control border border-cream/15 bg-cream/5 md:block md:h-auto md:w-auto md:border-0 md:bg-transparent">
-                    <step.icon className="h-6 w-6 text-leaf md:mb-4 md:h-7 md:w-7" />
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-control border border-cream/15 bg-cream/5 md:mb-5 md:h-12 md:w-12 md:bg-ink">
+                    <step.icon className="h-6 w-6 text-leaf md:h-7 md:w-7" />
                   </span>
                   <p className="font-okine text-sm uppercase tracking-[0.1em] text-cream/90">{step.label}</p>
                 </div>
+                <p className="mt-3 hidden font-okine text-[13px] leading-relaxed text-cream/55 md:block">
+                  {step.note}
+                </p>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
