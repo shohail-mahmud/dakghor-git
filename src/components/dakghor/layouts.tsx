@@ -26,6 +26,7 @@ const publicLinks = [
 export function PublicLayout() {
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (state) => state.location.pathname });
+  const signedIn = useDemoSession();
 
   return (
     <div className="flex min-h-screen flex-col bg-cream">
@@ -38,21 +39,32 @@ export function PublicLayout() {
                 key={item.to}
                 to={item.to}
                 className={cn(
-                  "rounded-control px-2 py-2 transition-colors hover:text-postbox",
+                  "relative rounded-control px-2 py-2 transition-colors hover:text-postbox",
                   path === item.to ? "text-postbox font-medium" : "text-ink/75"
                 )}
               >
                 {item.label}
+                {path === item.to && (
+                  <span className="absolute inset-x-2 -bottom-0.5 h-px bg-postbox/60" />
+                )}
               </Link>
             ))}
           </nav>
-          <div className="hidden items-center gap-3 md:flex">
-            <RouterButton to="/sign-in" variant="ghost" size="sm">
-              Sign In
-            </RouterButton>
-            <RouterButton to="/create-account" size="sm">
-              Create Account
-            </RouterButton>
+          <div className="hidden items-center gap-3 md:ml-9 md:flex">
+            {signedIn ? (
+              <RouterButton to="/postbox" size="sm">
+                Open Postbox
+              </RouterButton>
+            ) : (
+              <>
+                <RouterButton to="/sign-in" variant="ghost" size="sm">
+                  Sign In
+                </RouterButton>
+                <RouterButton to="/create-account" size="sm">
+                  Create Account
+                </RouterButton>
+              </>
+            )}
           </div>
           <Button
             variant="ghost"
@@ -80,13 +92,21 @@ export function PublicLayout() {
                 {item.label}
               </Link>
             ))}
-            <div className="mt-3 grid grid-cols-2 gap-3 border-t border-ink/10 pt-4">
-              <RouterButton to="/sign-in" variant="secondary" onClick={() => setOpen(false)}>
-                Sign In
-              </RouterButton>
-              <RouterButton to="/create-account" onClick={() => setOpen(false)}>
-                Create Account
-              </RouterButton>
+            <div className="mt-3 border-t border-ink/10 pt-4">
+              {signedIn ? (
+                <RouterButton to="/postbox" className="w-full" onClick={() => setOpen(false)}>
+                  Open Postbox
+                </RouterButton>
+              ) : (
+                <div className="grid grid-cols-2 gap-3">
+                  <RouterButton to="/sign-in" variant="secondary" onClick={() => setOpen(false)}>
+                    Sign In
+                  </RouterButton>
+                  <RouterButton to="/create-account" onClick={() => setOpen(false)}>
+                    Create Account
+                  </RouterButton>
+                </div>
+              )}
             </div>
           </nav>
         )}
@@ -96,33 +116,95 @@ export function PublicLayout() {
         <Outlet />
       </main>
 
-      <Footer />
+      <Footer signedIn={signedIn} />
     </div>
   );
 }
 
-function Footer() {
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { to: string; label: string }[];
+}) {
+  return (
+    <div>
+      <p className="font-ui text-[10px] uppercase tracking-[0.2em] text-ink/40">{title}</p>
+      <ul className="mt-3 space-y-2">
+        {links.map((link) => (
+          <li key={link.to}>
+            <Link
+              to={link.to}
+              className="font-ui text-[12px] text-ink/70 transition-colors hover:text-postbox"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Footer({ signedIn }: { signedIn: boolean }) {
   return (
     <footer className="border-t border-ink/10 bg-cream-dim/35">
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-5 px-5 py-7 md:flex-row md:items-center md:justify-between md:px-10">
-        <div>
-          <Logo />
-          <p className="mt-1 font-ui text-xs text-ink/55">
-            A digital postal service for letters worth waiting for.
-          </p>
+      <div className="mx-auto max-w-[1400px] px-5 py-10 md:px-10 md:py-12">
+        <div className="grid gap-9 md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-5">
+            <Logo />
+            <p className="mt-3 max-w-xs font-ui text-xs leading-relaxed text-ink/55">
+              A digital postal service for letters worth waiting for. No read receipts, no typing
+              dots, no rush.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8 md:col-span-7 md:grid-cols-3">
+            <FooterColumn
+              title="Navigation"
+              links={[
+                { to: "/", label: "Home" },
+                { to: "/how-it-works", label: "How It Works" },
+                { to: "/about", label: "About" },
+              ]}
+            />
+            <FooterColumn
+              title="Correspondence"
+              links={
+                signedIn
+                  ? [
+                      { to: "/postbox", label: "Postbox" },
+                      { to: "/write", label: "Write a Letter" },
+                      { to: "/address", label: "My Address" },
+                    ]
+                  : [
+                      { to: "/sign-in", label: "Sign In" },
+                      { to: "/create-account", label: "Create Account" },
+                    ]
+              }
+            />
+            <FooterColumn
+              title="Colophon"
+              links={[
+                { to: "/terms", label: "Terms of Carriage" },
+                { to: "/privacy", label: "Privacy" },
+              ]}
+            />
+          </div>
         </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 font-ui text-[11px] uppercase tracking-[0.1em] text-ink/65">
-          <Link to="/how-it-works">How It Works</Link>
-          <Link to="/about">About</Link>
-          <Link to="/terms">Terms</Link>
-          <Link to="/privacy">Privacy</Link>
-          <Link to="/sign-in">Sign In</Link>
-          <Link to="/create-account">Create Account</Link>
-        </nav>
-        <p className="font-ui text-[10px] text-ink/40">© 2026 Dakghor</p>
+
+        <div className="mt-10 flex flex-col gap-3 border-t border-ink/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-ui text-[10px] uppercase tracking-[0.22em] text-ink/35">
+            Dakghor Post · Delivered in its own time
+          </p>
+          <p className="font-ui text-[10px] text-ink/35">© 2026 Dakghor</p>
+        </div>
       </div>
     </footer>
   );
+}
+
 }
 
 const appLinks = [
