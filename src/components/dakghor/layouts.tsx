@@ -205,8 +205,6 @@ function Footer({ signedIn }: { signedIn: boolean }) {
   );
 }
 
-}
-
 const appLinks = [
   { to: "/postbox" as const, label: "Postbox", short: "Postbox", icon: House },
   { to: "/write" as const, label: "Write Letter", short: "Write", icon: Feather },
